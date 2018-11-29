@@ -34,4 +34,12 @@ public class Origin {
     public void setElementId(String elementId) {
         this.elementId = elementId;
     }
+
+    public String toString() {
+        if (elementId == null) {
+            return type;
+        } else {
+            return String.format("Element %s", elementId);
+        }
+    }
 }

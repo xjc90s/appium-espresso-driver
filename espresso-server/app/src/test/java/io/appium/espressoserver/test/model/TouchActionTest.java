@@ -2,14 +2,9 @@ package io.appium.espressoserver.test.model;
 
 import android.view.ViewConfiguration;
 
-import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.rule.PowerMockRule;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import java.util.List;
 
@@ -30,19 +25,8 @@ import static io.appium.espressoserver.test.helpers.w3c.Helpers.assertFloatEqual
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@PowerMockIgnore({ "org.mockito.*", "org.robolectric.*", "android.*" })
-@PrepareForTest(ViewConfiguration.class)
+@RunWith(RobolectricTestRunner.class)
 public class TouchActionTest {
-    @Rule
-    public PowerMockRule rule = new PowerMockRule();
-
-    @Before
-    public void before() {
-        PowerMockito.mockStatic(ViewConfiguration.class);
-        Mockito.when(ViewConfiguration.getTapTimeout()).thenReturn(10);
-        Mockito.when(ViewConfiguration.getLongPressTimeout()).thenReturn(100);
-    }
-
     @Test
     public void shouldConvertMoveTo() throws AppiumException {
         TouchAction touchAction = new TouchAction();
