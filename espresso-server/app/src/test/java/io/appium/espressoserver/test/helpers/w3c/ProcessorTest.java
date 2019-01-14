@@ -89,7 +89,7 @@ public class ProcessorTest {
         Action action = new Action();
         action.setDuration(10L);
         ActionObject actionObject = processPauseAction(action, InputSourceType.NONE, "any", 0);
-        assertEquals(actionObject.getDuration(), new Float(10));
+        assertEquals(actionObject.getDuration(), 10F);
     }
 
     @Test
@@ -132,7 +132,7 @@ public class ProcessorTest {
         ActionObject actionObject = processPointerMoveAction(action, InputSourceType.POINTER, "any", 0);
         assertFloatEquals(actionObject.getX(), 100);
         assertFloatEquals(actionObject.getY(), 200);
-        assertEquals(actionObject.getDuration(), new Float(300));
+        assertEquals(actionObject.getDuration(), 300F);
     }
 
     @Test
@@ -165,7 +165,7 @@ public class ProcessorTest {
         action.setType(ActionType.PAUSE);
         action.setDuration(300);
         ActionObject actionObject = processKeyAction(action, InputSourceType.KEY, "any", 0);
-        assertEquals(actionObject.getDuration(), new Float(300));
+        assertEquals(actionObject.getDuration(), 300F);
         assertEquals(actionObject.getSubType(), ActionType.PAUSE);
         assertEquals(actionObject.getType(), InputSourceType.KEY);
     }
@@ -212,7 +212,7 @@ public class ProcessorTest {
         action.setType(ActionType.PAUSE);
         action.setDuration(300);
         ActionObject actionObject = processPointerAction(action, pointerInputSource, "any", 0);
-        assertEquals(actionObject.getDuration(), new Float(300));
+        assertEquals(actionObject.getDuration(), 300F);
         assertEquals(actionObject.getSubType(), ActionType.PAUSE);
         assertEquals(actionObject.getType(), InputSourceType.POINTER);
     }

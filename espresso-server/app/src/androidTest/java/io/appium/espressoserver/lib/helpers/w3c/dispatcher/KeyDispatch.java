@@ -73,8 +73,11 @@ public class KeyDispatch {
             if (down) {
 
                 // 12: Append action object with subtype property changed to 'keyUp' to cancel list
-                ActionObject cancelActionObject = new ActionObject(actionObject);
-                cancelActionObject.setSubType(KEY_UP);
+                ActionObject cancelActionObject = actionObject.copy(
+                        actionObject.getId(),
+                        actionObject.getType(),
+                        KEY_UP,
+                        actionObject.getIndex());
                 inputStateTable.addActionToCancel(cancelActionObject);
 
                 // 13: Call implementation specific key-down event

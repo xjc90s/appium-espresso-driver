@@ -60,10 +60,13 @@ public class PointerDispatch {
         dispatcherAdapter.lockAdapter();
         try {
             if (down) {
-                // Add cancel object to cancel list
-                ActionObject cancelObject = new ActionObject(actionObject);
-                cancelObject.setSubType(POINTER_UP);
-                inputStateTable.addActionToCancel(cancelObject);
+                // Add cancel object to cancel list. POINTER_UP (opposite of POINTER_DOWN)
+                inputStateTable.addActionToCancel(actionObject.copy(
+                        actionObject.getId(),
+                        actionObject.getType(),
+                        POINTER_UP,
+                        actionObject.getIndex()
+                ));
 
                 // Dispatch implementation specific pointer down
                 dispatcherAdapter.pointerDown(button, actionObject.getId(), pointerType, x, y,

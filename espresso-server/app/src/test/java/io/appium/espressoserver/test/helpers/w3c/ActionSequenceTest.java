@@ -49,7 +49,7 @@ public class ActionSequenceTest {
         assertEquals(action.getId(), "finger1");
         assertEquals(action.getType(), POINTER);
         assertEquals(action.getSubType(), POINTER_MOVE);
-        assertEquals(action.getDuration(), new Float(0));
+        assertEquals(action.getDuration(), 0F);
         assertFloatEquals(action.getX(), 100);
         assertFloatEquals(action.getY(), 100);
 
@@ -57,7 +57,7 @@ public class ActionSequenceTest {
         assertEquals(action.getId(), "finger2");
         assertEquals(action.getType(), POINTER);
         assertEquals(action.getSubType(), POINTER_MOVE);
-        assertEquals(action.getDuration(), new Float(10));
+        assertEquals(action.getDuration(), 10F);
         assertFloatEquals(action.getX(), 200);
         assertFloatEquals(action.getY(), 400);
 
@@ -99,7 +99,7 @@ public class ActionSequenceTest {
         assertEquals(action.getId(), "finger1");
         assertEquals(action.getType(), POINTER);
         assertEquals(action.getSubType(), POINTER_MOVE);
-        assertEquals(action.getDuration(), new Float(1000));
+        assertEquals(action.getDuration(), 1000F);
         assertTrue(action.getPointer().equals(PointerType.TOUCH));
         assertFloatEquals(action.getX(), 20);
         assertFloatEquals(action.getY(), 0);
@@ -108,7 +108,7 @@ public class ActionSequenceTest {
         assertEquals(action.getId(), "finger2");
         assertEquals(action.getType(), POINTER);
         assertEquals(action.getSubType(), POINTER_MOVE);
-        assertEquals(action.getDuration(), new Float(1000));
+        assertEquals(action.getDuration(), 1000F);
         assertEquals(action.getOrigin().getType(), InputSource.POINTER);
         assertFloatEquals(action.getX(), 50);
         assertFloatEquals(action.getY(), 0);
@@ -137,7 +137,7 @@ public class ActionSequenceTest {
         assertEquals(action.getId(), "finger2");
         assertEquals(action.getType(), POINTER);
         assertEquals(action.getSubType(), PAUSE);
-        assertEquals(action.getDuration(), new Float(0));
+        assertEquals(action.getDuration(), 0F);
 
         assertFalse(tick.hasNext());
         assertFalse(actionSequence.hasNext());

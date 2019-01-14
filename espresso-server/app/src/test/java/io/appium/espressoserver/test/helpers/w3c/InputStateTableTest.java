@@ -27,11 +27,8 @@ public class InputStateTableTest {
         W3CActionAdapter adapter = new DummyW3CActionAdapter();
 
         // Create a pointer down action
-        ActionObject actionObject = new ActionObject();
-        actionObject.setType(POINTER);
-        actionObject.setSubType(POINTER_DOWN);
+        ActionObject actionObject = new ActionObject("123", POINTER, POINTER_DOWN, -1);
         actionObject.setButton(5);
-        actionObject.setId("123");
 
         // Call the pointer down action
         actionObject.dispatch(adapter, inputStateTable, 0, 0);
@@ -53,11 +50,8 @@ public class InputStateTableTest {
         final String SHIFT = "\uE008";
 
         // Create a pointer down action
-        ActionObject actionObject = new ActionObject();
-        actionObject.setType(KEY);
-        actionObject.setSubType(KEY_DOWN);
+        ActionObject actionObject = new ActionObject("456", KEY, KEY_DOWN, -1);
         actionObject.setValue(SHIFT);
-        actionObject.setId("456");
 
         // Call the pointer down action
         actionObject.dispatch(adapter, inputStateTable, 0, 0);

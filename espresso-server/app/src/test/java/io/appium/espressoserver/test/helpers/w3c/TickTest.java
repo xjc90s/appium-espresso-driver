@@ -47,7 +47,7 @@ public class TickTest {
     @Test
     public void shouldCalculateMaxDurationZeroIfNoDurations() {
         Tick tick = new Tick();
-        tick.addAction(new ActionObject());
+        tick.addAction(new ActionObject("1", NONE, PAUSE, -1));
         assertFloatEquals(tick.calculateTickDuration(), 0);
     }
 
@@ -60,20 +60,13 @@ public class TickTest {
 
         for (int i=0; i<valueOne.length; i++) {
             Tick tick = new Tick();
-            ActionObject actionObjectOne = new ActionObject();
-            actionObjectOne.setType(NONE);
-            actionObjectOne.setSubType(PAUSE);
+            ActionObject actionObjectOne = new ActionObject("1", NONE, PAUSE, -1);
             actionObjectOne.setDuration((float) valueOne[i]);
 
-            ActionObject actionObjectTwo = new ActionObject();
-            actionObjectTwo.setType(POINTER);
-            actionObjectTwo.setSubType(POINTER_MOVE);
+            ActionObject actionObjectTwo = new ActionObject("2", POINTER, POINTER_MOVE, -1);
             actionObjectTwo.setDuration((float) valueTwo[i]);
 
-            ActionObject actionObjectThree = new ActionObject();
-            actionObjectTwo.setType(POINTER);
-            actionObjectTwo.setSubType(POINTER_MOVE);
-
+            ActionObject actionObjectThree = new ActionObject("3", POINTER, POINTER_MOVE, -1);
             tick.addAction(actionObjectOne);
             tick.addAction(actionObjectTwo);
             tick.addAction(actionObjectThree);
@@ -87,8 +80,7 @@ public class TickTest {
         InputStateTable inputStateTable = new InputStateTable();
         Tick tick = new Tick();
         String sourceId = "something1";
-        ActionObject actionObject = new ActionObject(sourceId, KEY, null, 0);
-        actionObject.setSubType(KEY_DOWN);
+        ActionObject actionObject = new ActionObject(sourceId, KEY, KEY_DOWN, 0);
         actionObject.setValue("F");
         tick.addAction(actionObject);
         assertFalse(inputStateTable.hasInputState(sourceId));
@@ -102,8 +94,7 @@ public class TickTest {
         InputStateTable inputStateTable = new InputStateTable();
         Tick tick = new Tick();
         String sourceId = "something2";
-        ActionObject actionObject = new ActionObject(sourceId, POINTER, null, 0);
-        actionObject.setSubType(POINTER_DOWN);
+        ActionObject actionObject = new ActionObject(sourceId, POINTER, POINTER_DOWN, 0);
         actionObject.setButton(0);
         tick.addAction(actionObject);
         assertFalse(inputStateTable.hasInputState(sourceId));
@@ -117,7 +108,7 @@ public class TickTest {
         InputStateTable inputStateTable = new InputStateTable();
         Tick tick = new Tick();
         String sourceId = "something3";
-        ActionObject actionObject = new ActionObject(sourceId, NONE, null, 0);
+        ActionObject actionObject = new ActionObject(sourceId, NONE, PAUSE, 0);
         tick.addAction(actionObject);
         assertFalse(inputStateTable.hasInputState(sourceId));
         tick.dispatchAll(new DummyW3CActionAdapter(), inputStateTable, tick.calculateTickDuration());
@@ -132,20 +123,16 @@ public class TickTest {
         KeyInputState keyInputState = new KeyInputState();
         keyInputState.addPressed("g");
         inputStateTable.addInputState(sourceId, keyInputState);
-        ActionObject actionObjectOne = new ActionObject(sourceId, KEY, null, 0);
-        actionObjectOne.setSubType(KEY_DOWN);
+        ActionObject actionObjectOne = new ActionObject(sourceId, KEY, KEY_DOWN, 0);
         actionObjectOne.setValue("e");
 
-        ActionObject actionObjectTwo = new ActionObject(sourceId, KEY, null, 0);
-        actionObjectTwo.setSubType(KEY_DOWN);
+        ActionObject actionObjectTwo = new ActionObject(sourceId, KEY, KEY_DOWN, 0);
         actionObjectTwo.setValue("f");
 
-        ActionObject actionObjectThree = new ActionObject(sourceId, KEY, null, 0);
-        actionObjectThree.setSubType(KEY_UP);
+        ActionObject actionObjectThree = new ActionObject(sourceId, KEY, KEY_UP, 0);
         actionObjectThree.setValue("g");
 
-        ActionObject actionObjectFour = new ActionObject(sourceId, KEY, null, 0);
-        actionObjectFour.setSubType(KEY_DOWN);
+        ActionObject actionObjectFour = new ActionObject(sourceId, KEY, KEY_DOWN, 0);
         actionObjectFour.setValue("\uE008");
 
         tick.addAction(actionObjectOne);
@@ -186,16 +173,14 @@ public class TickTest {
         inputStateTable.addInputState(sourceId2, pointerInputState);
 
         // Construct pointer move event
-        ActionObject actionObjectOne = new ActionObject(sourceId, POINTER, null, 0);
-        actionObjectOne.setSubType(POINTER_MOVE);
+        ActionObject actionObjectOne = new ActionObject(sourceId, POINTER, POINTER_MOVE, 0);
         actionObjectOne.setPointer(TOUCH);
         actionObjectOne.setX(10.0F);
         actionObjectOne.setY(20.0F);
         actionObjectOne.setOrigin(new Origin(VIEWPORT));
 
         // Construct another pointer move event
-        ActionObject actionObjectTwo = new ActionObject(sourceId2, POINTER, null, 0);
-        actionObjectTwo.setSubType(POINTER_MOVE);
+        ActionObject actionObjectTwo = new ActionObject(sourceId2, POINTER, POINTER_MOVE, 0);
         actionObjectTwo.setPointer(TOUCH);
         actionObjectTwo.setX(10.0F);
         actionObjectTwo.setY(20.0F);
@@ -250,12 +235,10 @@ public class TickTest {
         inputStateTable.addInputState(sourceId, pointerInputState);
 
         // Depress the shift key
-        ActionObject actionObjectTwo = new ActionObject(sourceId, KEY, null, 0);
-        actionObjectTwo.setSubType(KEY_DOWN);
+        ActionObject actionObjectTwo = new ActionObject(sourceId, KEY, KEY_DOWN, 0);
 
         // Construct pointer move event
-        ActionObject actionObjectOne = new ActionObject(sourceId, POINTER, null, 0);
-        actionObjectOne.setSubType(POINTER_DOWN);
+        ActionObject actionObjectOne = new ActionObject(sourceId, POINTER, POINTER_DOWN, 0);
 
         tick.addAction(actionObjectOne);
         tick.addAction(actionObjectTwo);
