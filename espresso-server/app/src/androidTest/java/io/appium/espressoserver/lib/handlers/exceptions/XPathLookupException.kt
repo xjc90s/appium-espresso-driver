@@ -14,16 +14,7 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class InvalidArgumentException extends AppiumException {
 
-    public InvalidArgumentException(String reason) {
-        super(reason);
-    }
-
-    public InvalidArgumentException(Throwable cause) {
-        super(cause);
-    }
-
-}
+class XPathLookupException(xpath: String, reason: String) : AppiumException(String.format("Could not parse XPath %s: %s", xpath, reason))

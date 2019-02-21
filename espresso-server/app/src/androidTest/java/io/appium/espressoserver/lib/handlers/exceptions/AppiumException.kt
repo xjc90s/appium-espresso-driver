@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class SessionNotCreatedException extends AppiumException {
+open class AppiumException : Exception {
 
-    public SessionNotCreatedException(Throwable cause) {
-        super(cause);
-    }
+    constructor() : super() {}
+
+    constructor(reason: String) : super(reason) {}
+
+    constructor(e: Throwable) : super(e) {}
+
+    constructor(reason: String, e: Throwable) : super(reason, e) {}
 }

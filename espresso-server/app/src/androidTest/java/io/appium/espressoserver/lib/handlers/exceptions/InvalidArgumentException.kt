@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
+class InvalidArgumentException : AppiumException {
 
-public class ElementNotVisibleException extends AppiumException {
-    public ElementNotVisibleException(String reason) {
-        super(reason);
-    }
+    constructor(reason: String) : super(reason) {}
+
+    constructor(cause: Throwable) : super(cause) {}
+
 }

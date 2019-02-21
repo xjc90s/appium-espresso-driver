@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class NoAlertOpenException extends AppiumException {
-    public NoAlertOpenException(String reason) {
-        super(reason);
-    }
+class InvalidElementStateException : AppiumException {
+    constructor(reason: String) : super(reason) {}
 
-    public NoAlertOpenException() {
-        super("No alerts can be detected on the screen");
-    }
+    constructor(reason: String, cause: Throwable) : super(reason, cause) {}
+
+    constructor(action: String, elementId: String?, cause: Throwable) :
+            super("Could not perform '${action}' action on the element '${elementId}", cause)
 }

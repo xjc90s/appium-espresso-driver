@@ -29,7 +29,7 @@ class SetTime : RequestHandler<SetTimeParams, Void?> {
     override fun handle(params: SetTimeParams): Void? {
         val viewInteraction = Element.getViewInteractionById(params.elementId)
         try {
-            viewInteraction.perform(PickerActions.setTime(params.hours!!, params.minutes!!))
+            viewInteraction.perform(PickerActions.setTime(params.hours, params.minutes))
         } catch (e: Exception) {
             if (e is EspressoException) {
                 throw AppiumException("Could not set time on element. Reason: ${e}")

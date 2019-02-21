@@ -35,28 +35,28 @@ class SendKeys : RequestHandler<TextParams, Void?> {
 
     @Throws(AppiumException::class)
     override fun handle(params: TextParams): Void? {
-        val id = params.elementId
-        val view = Element.getViewById(id)
+        val elementId = params.elementId
+        val view = Element.getViewById(elementId)
 
         // Convert the array of text to a String
-        var value: String? = params.value.joinToString(separator="")
+        var value: String = params.value.joinToString(separator="")
 
         try {
             if (view is ProgressBar) {
-                view.progress = Integer.parseInt(value!!)
+                view.progress = Integer.parseInt(value)
                 return null
             }
             if (view is NumberPicker) {
-                view.value = Integer.parseInt(value!!)
+                view.value = Integer.parseInt(value)
                 return null
             }
         } catch (e: NumberFormatException) {
             throw InvalidArgumentException("Cannot convert '${value}' to an integer")
         }
 
-        val viewInteraction = Element.getViewInteractionById(id)
+        val viewInteraction = Element.getViewInteractionById(elementId)
         try {
-            viewInteraction.perform(typeText(value!!))
+            viewInteraction.perform(typeText(value))
         } catch (e: PerformException) {
             throw InvalidElementStateException("sendKeys", params.elementId, e)
         } catch (e: RuntimeException) {

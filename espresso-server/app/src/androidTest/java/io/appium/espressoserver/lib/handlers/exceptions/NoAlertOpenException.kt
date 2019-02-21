@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
+class NoAlertOpenException : AppiumException {
+    constructor(reason: String) : super(reason) {}
 
-public class XPathLookupException extends AppiumException {
-    public XPathLookupException(String xpath, String reason) {
-        super(String.format("Could not parse XPath %s: %s", xpath, reason));
-    }
+    constructor() : super("No alerts can be detected on the screen") {}
 }

@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class StaleElementException extends AppiumException {
-    public StaleElementException(String elementId) {
-        super(String.format("The cached element %s no longer exists in the Android View hierarchy. Try to find it using a locator.", elementId));
-    }
+class NotYetImplementedException : AppiumException {
+    constructor() : super("The operation requested is not yet implemented by Espresso driver") {}
+
+    constructor(message: String) : super(message) {}
 }

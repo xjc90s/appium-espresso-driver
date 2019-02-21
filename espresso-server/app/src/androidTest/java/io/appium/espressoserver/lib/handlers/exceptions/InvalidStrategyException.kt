@@ -14,12 +14,6 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class NoSuchElementException extends AppiumException {
-
-    public NoSuchElementException(String reason) {
-        super(reason);
-    }
-
-}
+class InvalidStrategyException(reason: String) : AppiumException(reason)

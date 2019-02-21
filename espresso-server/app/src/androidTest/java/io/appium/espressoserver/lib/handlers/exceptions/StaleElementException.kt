@@ -14,19 +14,6 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class InvalidElementStateException extends AppiumException {
-    public InvalidElementStateException(String reason) {
-        super(reason);
-    }
-
-    public InvalidElementStateException(String reason, Throwable cause) {
-        super(reason, cause);
-    }
-
-    public InvalidElementStateException(String action, String elementId, Throwable cause) {
-        super(String.format("Could not perform %s action on the element %s", action, elementId),
-                cause);
-    }
-}
+class StaleElementException(elementId: String) : AppiumException(String.format("The cached element %s no longer exists in the Android View hierarchy. Try to find it using a locator.", elementId))

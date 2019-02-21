@@ -14,10 +14,6 @@
  * limitations under the License.
  */
 
-package io.appium.espressoserver.lib.handlers.exceptions;
+package io.appium.espressoserver.lib.handlers.exceptions
 
-public class InvalidStrategyException extends AppiumException {
-    public InvalidStrategyException(String reason) {
-        super(reason);
-    }
-}
+class SessionNotCreatedException(cause: Throwable) : AppiumException(cause)
