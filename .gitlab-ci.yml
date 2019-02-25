@@ -52,8 +52,8 @@ stages:
 unitTests:
   stage: test
   script:
-  - npx eslint lib/ test/
-  - npx gulp unit-test
+    - npx eslint lib/ test/
+    - npx gulp unit-test
 
 e2eTestCommands:
   stage: e2e
@@ -61,4 +61,3 @@ e2eTestCommands:
   script:
     - npm run test:server
     - npx mocha --timeout ${MOCHA_TIMEOUT} build/test/functional/commands
-    - echo "NOT READY YET"
