@@ -55,7 +55,7 @@ espressoTest:
   script:
     - npm run test:server
 
-junitTests:
+e2eTestCommands:
   stage: e2e
   script:
     - echo "NOT READY YET"
