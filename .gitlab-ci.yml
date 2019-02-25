@@ -42,8 +42,7 @@ stages:
 
 nodeTest:
   stage: unit
-  #only:
-    #changes: lib/
+  only: lib/
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
@@ -52,12 +51,11 @@ nodeTest:
 
 espressoTest:
   stage: unit
-  #only:
-    #changes: espresso-server/
+  only: espresso-server/
   script:
     - npm run test:server
 
-e2eTestCommands:
+junitTests:
   stage: e2e
   script:
     - echo "NOT READY YET"
