@@ -4,6 +4,8 @@ variables:
   ANDROID_COMPILE_SDK: "28"
   ANDROID_BUILD_TOOLS: "28.0.2"
   ANDROID_SDK_TOOLS:   "4333796"
+  ANDROID_EMU_TARGET: "android-28"
+  ANDROID_EMU_NAME: "test"
   TERM: "dumb"
   MOCHA_TIMEOUT: 0
 
@@ -37,10 +39,10 @@ before_script:
   - set -o pipefail
 
   # Start the Emulator
+  - emulator -list-avds
+  - emulator @Pixel_2_API_P
 
   # NodeJS installation
-
-  # Install NPM + NodeJS
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
   - apt install nodejs
   - node --version
