@@ -28,6 +28,9 @@ variables:
 
   # Start the Emulator
 
+  # Build the server
+  - npm run build
+
 before_script:
   # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
@@ -45,18 +48,18 @@ stages:
   - test
   - e2e
 
-# Define the jobs here
+# Define the jobs here...
+
+# Run the NodeJS Mocha Tests and JUnit Unit Tests here
 unitTests:
   stage: test
   script:
     - npx eslint lib/ test/
     - npx gulp unit-test
-    - npm run test:server
-
 
 e2eCommandsTest:
   stage: e2e
   extends: .androidE2E
   script:
-    - npm run build
+    - npm run test:server
     - echo "NOT READY YET"
