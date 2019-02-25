@@ -17,35 +17,41 @@ before_script:
   - apt-get --quiet update --yes
   - apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
   - wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip
-  - unzip -d android-sdk-linux android-sdk.zip
-  - echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
-  - echo y | android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
-  - echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
-  - export ANDROID_HOME=$PWD/android-sdk-linux
-  - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
+  - unzip -d ../android-sdk-linux android-sdk.zip
+  - echo y | ../android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
+  - echo y | ../android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
+  - echo y | ../android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
+  - export ANDROID_HOME=$PWD/../android-sdk-linux
+  - export PATH=$PATH:$PWD/../android-sdk-linux/platform-tools/
   - chmod +x ./espresso-server/gradlew
 
   # Temporarily disable checking for EPIPE error and use yes to accept all licenses
   - set +o pipefail
-  - yes | android-sdk-linux/tools/bin/sdkmanager --licenses
+  - yes | ../android-sdk-linux/tools/bin/sdkmanager --licenses
   - set -o pipefail
 
   # Start the Emulator
+  - export TOOLS=${ANDROID_HOME}/tools
+  - export PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
+  - echo no | avdmanager create avd -k "${ANDROID_EMU_IMAGE}" -n "${ANDROID_EMU_NAME}" -f --abi "${ANDROID_EMU_ABI}" --tag "${ANDROID_EMU_TAG}" || exit 1
+  - emulator -avd "${ANDROID_EMU_NAME}" -no-window -camera-back none -camera-front none &
 
 stages:
   - unit
   - e2e
 
-npmInstall:
+nodeTest:
   stage: unit
+  only: lib/
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
     - npm run lint
     - npm run test:node
 
-espresso:
+espressoTest:
   stage: unit
+  only: espresso-server/
   script:
     - npm run test:server
 
