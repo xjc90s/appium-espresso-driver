@@ -7,6 +7,16 @@ variables:
   TERM: "dumb"
   MOCHA_TIMEOUT: 0
 
+before_script:
+  # NodeJS installation
+  - curl -sL https://deb.nodesource.com/setup_11.x | bash -
+  - apt install nodejs
+  - node --version
+  - npm --version
+  - npm install
+  - npm install --chromedriver_version="2.24"
+  - npm run build
+
 # Define Android specific test
 .androidE2E:
   before_script:
@@ -28,15 +38,6 @@ variables:
   - set -o pipefail
 
   # Start the Emulator
-
-  # NodeJS installation
-  - curl -sL https://deb.nodesource.com/setup_11.x | bash -
-  - apt install nodejs
-  - node --version
-  - npm --version
-  - npm install
-  - npm install --chromedriver_version="2.24"
-  - npm run build
 
 cache:  
   paths:
