@@ -15,7 +15,6 @@ before_script:
   - npm --version
   - npm install
   - npm install --chromedriver_version="2.24"
-  - npm run build
 
 # Define Android specific test
 .androidE2E:
@@ -53,7 +52,7 @@ stages:
 unitTests:
   stage: test
   script:
-    - npx eslint lib/ test/ 
+    - npx eslint lib/ test/
     - npx gulp unit-test
 
 e2eTestCommands:
