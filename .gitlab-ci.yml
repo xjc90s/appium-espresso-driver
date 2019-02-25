@@ -62,11 +62,11 @@ stages:
 # Define the jobs here...
 
 # Run the NodeJS Mocha Tests and JUnit Unit Tests here
-unitTests:
-  stage: test
-  script:
-    - npx eslint lib/ test/
-    - npx gulp unit-test
+#unitTests:
+  #stage: test
+  #script:
+    #- npx eslint lib/ test/
+    #- npx gulp unit-test
 
 junitTests:
   stage: android
