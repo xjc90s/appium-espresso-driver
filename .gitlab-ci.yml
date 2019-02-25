@@ -31,31 +31,21 @@ before_script:
   - set -o pipefail
 
   # Start the Emulator
-  - export TOOLS=${ANDROID_HOME}/tools
-  - export PATH=${ANDROID_HOME}:${ANDROID_HOME}/emulator:${TOOLS}:${TOOLS}/bin:${ANDROID_HOME}/platform-tools:${PATH}
-  - echo no | avdmanager create avd -k "${ANDROID_EMU_IMAGE}" -n "${ANDROID_EMU_NAME}" -f --abi "${ANDROID_EMU_ABI}" --tag "${ANDROID_EMU_TAG}" || exit 1
-  - emulator -avd "${ANDROID_EMU_NAME}" -no-window -camera-back none -camera-front none &
 
 stages:
-  - unit
+  - test
   - e2e
 
-nodeTest:
-  stage: unit
-  #only: lib/
+unitTests:
+  stage: test
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
-    #- npm run lint // TODO: This has a problem with the `android-sdk-tools` being checked too
-    - npm run test:node
+    - npx eslint lib/ test/
+    - npm test
+    - npm run build
 
-espressoTest:
-  stage: unit
-  #only: espresso-server/
-  script:
-    - npm run test:server
-
-junitTests:
+e2eCommandsTest:
   stage: e2e
   script:
     - echo "NOT READY YET"
