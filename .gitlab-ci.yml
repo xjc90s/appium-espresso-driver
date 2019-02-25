@@ -6,7 +6,7 @@ variables:
   ANDROID_SDK_TOOLS:   "4333796"
 
 before_script:
-  # NodeJS stuff
+  # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
   - apt install nodejs
   - node --version
@@ -23,29 +23,27 @@ before_script:
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x ./gradlew
-  # temporarily disable checking for EPIPE error and use yes to accept all licenses
+
+  # Temporarily disable checking for EPIPE error and use yes to accept all licenses
   - set +o pipefail
   - yes | android-sdk-linux/tools/bin/sdkmanager --licenses
   - set -o pipefail
 
+  # Start the Emulator
+
 stages:
   - build
-  - test
+  - unit
+  - e2e
 
-lintDebug:
+npmInstall:
   stage: build
   script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+    - npm install
+    - npm install --chromedriver_version="2.24"
 
-assembleDebug:
-  stage: build
-  script:
-    - ./gradlew assembleDebug
-  artifacts:
-    paths:
-    - app/build/outputs/
 
-debugTests:
-  stage: test
+unitTest:
+  stage: unittest
   script:
-    - ./gradlew -Pci --console=plain :app:testDebug
+    - npm test
