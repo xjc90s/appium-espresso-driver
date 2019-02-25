@@ -12,10 +12,6 @@ before_script:
   - apt install nodejs
   - node --version
   - npm --version
-  
-cache:  
-  paths:
-    - node_modules/
     
 stages:
   - test
