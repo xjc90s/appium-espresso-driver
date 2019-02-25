@@ -42,7 +42,6 @@ stages:
 
 nodeTest:
   stage: unit
-  only: lib/
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
@@ -51,7 +50,6 @@ nodeTest:
 
 espressoTest:
   stage: unit
-  only: espresso-server/
   script:
     - npm run test:server
 
