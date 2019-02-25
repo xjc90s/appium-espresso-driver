@@ -7,8 +7,8 @@ variables:
 
 before_script:
   # NodeJS stuff
-  - sudo curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
-  - sudo apt install nodejs
+  - curl -sL https://deb.nodesource.com/setup_11.x | sudo bash -
+  - apt install nodejs
   - node --version
   - npm --version
 
