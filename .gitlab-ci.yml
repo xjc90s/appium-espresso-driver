@@ -38,6 +38,17 @@ before_script:
 
   # Start the Emulator
 
+  # NodeJS installation
+
+  # Install NPM + NodeJS
+  - curl -sL https://deb.nodesource.com/setup_11.x | bash -
+  - apt install nodejs
+  - node --version
+  - npm --version
+  - npm install
+  - npm install --chromedriver_version="2.24"
+  - npm run build
+
 cache:  
   paths:
     - node_modules/
