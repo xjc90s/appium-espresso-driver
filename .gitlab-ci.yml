@@ -5,6 +5,7 @@ variables:
   ANDROID_BUILD_TOOLS: "28.0.2"
   ANDROID_SDK_TOOLS:   "4333796"
   TERM: "dumb"
+  MOCHA_TIMEOUT: 0
 
 # Define Android specific test
 .androidE2E:
@@ -51,12 +52,13 @@ stages:
 unitTests:
   stage: test
   script:
-    - npx eslint lib/ test/
-    - npx gulp unit-test
+  - npx eslint lib/ test/
+  - npx gulp unit-test
 
-e2eCommandsTest:
+e2eTestCommands:
   stage: e2e
   extends: .androidE2E
   script:
     - npm run test:server
+    - npx mocha --timeout ${MOCHA_TIMEOUT} build/test/functional/commands
     - echo "NOT READY YET"
