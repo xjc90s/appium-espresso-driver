@@ -55,7 +55,7 @@ cache:
 
 stages:
   - test
-  - e2e
+  - android
 
 # Define the jobs here...
 
@@ -66,9 +66,14 @@ unitTests:
     - npx eslint lib/ test/
     - npx gulp unit-test
 
-e2eTestCommands:
-  stage: e2e
+junitTests:
+  stage: android
   extends: .androidE2E
   script:
     - npm run test:server
+
+e2eTestCommands:
+  stage: android
+  extends: .androidE2E
+  script:
     - npx mocha --timeout ${MOCHA_TIMEOUT} build/test/functional/commands
