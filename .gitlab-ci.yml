@@ -31,7 +31,11 @@ before_script:
   - set -o pipefail
 
   # Start the Emulator
-
+  
+cache:  
+  paths:
+    - node_modules/
+    
 stages:
   - test
   - e2e
@@ -42,10 +46,10 @@ unitTests:
     - npm install
     - npm install --chromedriver_version="2.24"
     - npx eslint lib/ test/
-    - npm test
-    - npm run build
+    - npx gulp unit-test
 
 e2eCommandsTest:
   stage: e2e
   script:
+    - npm run build
     - echo "NOT READY YET"
