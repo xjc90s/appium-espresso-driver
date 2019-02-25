@@ -28,10 +28,6 @@ variables:
 
   # Start the Emulator
 
-  # Build the server
-  - npm run build
-
-before_script:
   # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
   - apt install nodejs
@@ -39,6 +35,7 @@ before_script:
   - npm --version
   - npm install
   - npm install --chromedriver_version="2.24"
+  - npm run build
 
 cache:  
   paths:
