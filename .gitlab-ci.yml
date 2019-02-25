@@ -39,8 +39,8 @@ before_script:
   - set -o pipefail
 
   # Start the Emulator
-  - emulator -list-avds
-  - emulator @Pixel_2_API_P
+  - $ANDROID_HOME/tools/emulator -list-avds
+  - $ANDROID_HOME/tools/emulator @Pixel_2_API_P
 
   # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
