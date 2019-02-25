@@ -12,6 +12,8 @@ before_script:
   - apt install nodejs
   - node --version
   - npm --version
+  - npm install
+  - npm install --chromedriver_version="2.24"
     
 stages:
   - test
@@ -21,8 +23,6 @@ stages:
 unitTests:
   stage: test
   script:
-    - npm install
-    - npm install --chromedriver_version="2.24"
     - npx eslint lib/ test/
     - npx gulp unit-test
     - npm run test:server
