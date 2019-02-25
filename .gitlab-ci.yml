@@ -44,7 +44,7 @@ npmInstall:
     - npm run build
 
 unitTest:
-  stage: unittest
+  stage: unit
   script:
     - npm run lint
     - npm test
