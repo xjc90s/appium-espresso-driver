@@ -53,7 +53,7 @@ stages:
 unitTests:
   stage: test
   script:
-    - npx eslint lib/ test/
+    - npx eslint lib/ test/ 
     - npx gulp unit-test
 
 e2eTestCommands:
