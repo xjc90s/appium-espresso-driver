@@ -4,6 +4,7 @@ variables:
   ANDROID_COMPILE_SDK: "28"
   ANDROID_BUILD_TOOLS: "28.0.2"
   ANDROID_SDK_TOOLS:   "4333796"
+  TERM: "dumb"
 
 before_script:
   # NodeJS installation
@@ -32,19 +33,23 @@ before_script:
   # Start the Emulator
 
 stages:
-  - build
   - unit
   - e2e
 
 npmInstall:
-  stage: build
+  stage: unit
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
-    - npm run build
+    - npm run lint
+    - npm run test:node
 
-unitTest:
+espresso:
   stage: unit
   script:
-    - npm run lint
-    - npm test
+    - npm run test:server
+
+junitTests:
+  stage: e2e
+  script:
+    - echo "NOT READY YET"
