@@ -41,9 +41,10 @@ npmInstall:
   script:
     - npm install
     - npm install --chromedriver_version="2.24"
-
+    - npm run build
 
 unitTest:
   stage: unittest
   script:
+    - npm run lint
     - npm test
