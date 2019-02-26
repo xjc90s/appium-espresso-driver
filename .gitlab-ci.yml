@@ -32,6 +32,7 @@ before_script:
   - echo y | android-sdk-linux/tools/bin/sdkmanager "emulator" # TODO: Do we need this?
   - echo y | android-sdk-linux/tools/bin/sdkmanager "system-images;android-${ANDROID_COMPILE_SDK};google_apis;x86" # TODO: Do we need this?
   - export ANDROID_HOME=$PWD/android-sdk-linux
+  - export ANDROID_SDK_ROOT=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x ./espresso-server/gradlew
 
