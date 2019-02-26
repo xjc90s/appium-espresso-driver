@@ -29,8 +29,8 @@ before_script:
   - echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null
   - echo y | android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null
   - echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
-  - echo y | android-sdk-linux/tools/bin/sdkmanager "emulator"
-  - echo y | android-sdk-linux/tools/bin/sdkmanager "system-images;android-${ANDROID_COMPILE_SDK};google_apis;x86"
+  #- echo y | android-sdk-linux/tools/bin/sdkmanager "emulator" # TODO: Do we need this?
+  #- echo y | android-sdk-linux/tools/bin/sdkmanager "system-images;android-${ANDROID_COMPILE_SDK};google_apis;x86" # TODO: Do we need this?
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
   - chmod +x ./espresso-server/gradlew
@@ -41,9 +41,10 @@ before_script:
   - set -o pipefail
 
   # Build and run the Emulator
-  - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-${ANDROID_COMPILE_SDK};google_apis;armeabi-v7a"
+  - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-${ANDROID_COMPILE_SDK};google_apis;x86"
   - $ANDROID_HOME/tools/emulator -list-avds
-  - $ANDROID_HOME/tools/emulator @Pixel_2_API_P -no-window -camera-back none -camera-front none
+  - $ANDROID_HOME/tools/emulator @test -no-window -camera-back none -camera-front none
+
 
   # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
