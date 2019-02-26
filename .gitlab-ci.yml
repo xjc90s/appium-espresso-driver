@@ -42,8 +42,8 @@ before_script:
 
   # Build and run the Emulator
   - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-${ANDROID_COMPILE_SDK};google_apis;x86"
-  - $ANDROID_HOME/tools/emulator -list-avds
-  - $ANDROID_HOME/tools/emulator @test -no-window -camera-back none -camera-front none
+  - $ANDROID_HOME/emulator/emulator -list-avds
+  - $ANDROID_HOME/emulator/emulator @test -no-window -camera-back none -camera-front none
 
 
   # NodeJS installation
