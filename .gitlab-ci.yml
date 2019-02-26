@@ -38,7 +38,8 @@ before_script:
   - yes | android-sdk-linux/tools/bin/sdkmanager --licenses
   - set -o pipefail
 
-  # Start the Emulator
+  # Build and run the Emulator
+  - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a"
   - $ANDROID_HOME/tools/emulator -list-avds
   - $ANDROID_HOME/tools/emulator @Pixel_2_API_P
 
