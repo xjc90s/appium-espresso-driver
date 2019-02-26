@@ -41,9 +41,9 @@ before_script:
   - set -o pipefail
 
   # Build and run the Emulator
-  - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a"
+  - echo "no" | $ANDROID_HOME/tools/bin/avdmanager create avd -n test -k "system-images;android-${ANDROID_COMPILE_SDK};google_apis;armeabi-v7a"
   - $ANDROID_HOME/tools/emulator -list-avds
-  - $ANDROID_HOME/tools/emulator @Pixel_2_API_P
+  - $ANDROID_HOME/tools/emulator @Pixel_2_API_P -no-window -camera-back none -camera-front none
 
   # NodeJS installation
   - curl -sL https://deb.nodesource.com/setup_11.x | bash -
