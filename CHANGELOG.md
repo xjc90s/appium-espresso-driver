@@ -1,3 +1,9 @@
+## [6.3.10](https://github.com/appium/appium-espresso-driver/compare/v6.3.9...v6.3.10) (2026-02-16)
+
+### Bug Fixes
+
+* format ([#1136](https://github.com/appium/appium-espresso-driver/issues/1136)) ([c293ad0](https://github.com/appium/appium-espresso-driver/commit/c293ad0a9b10a819d02f1576746046436e53c50e))
+
 ## [6.3.9](https://github.com/appium/appium-espresso-driver/compare/v6.3.8...v6.3.9) (2026-01-31)
 
 ### Miscellaneous Chores
