@@ -1,3 +1,9 @@
+## [6.4.0](https://github.com/appium/appium-espresso-driver/compare/v6.3.10...v6.4.0) (2026-02-18)
+
+### Features
+
+* add mobile:listApps ([#1137](https://github.com/appium/appium-espresso-driver/issues/1137)) ([612c656](https://github.com/appium/appium-espresso-driver/commit/612c656946f7252f2007b83f4ef7ab00da9b5fa5))
+
 ## [6.3.10](https://github.com/appium/appium-espresso-driver/compare/v6.3.9...v6.3.10) (2026-02-16)
 
 ### Bug Fixes
