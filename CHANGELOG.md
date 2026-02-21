@@ -1,3 +1,13 @@
+## [7.0.0](https://github.com/appium/appium-espresso-driver/compare/v6.4.0...v7.0.0) (2026-02-21)
+
+### ⚠ BREAKING CHANGES
+
+* modify the mobile:listApps style to follow XCUITest driver format
+
+### Bug Fixes
+
+* modify the format of listApps to follow xcuitest format ([#1139](https://github.com/appium/appium-espresso-driver/issues/1139)) ([3f1f5fb](https://github.com/appium/appium-espresso-driver/commit/3f1f5fbd069a856646ca684d3830dc7e0df228a3))
+
 ## [6.4.0](https://github.com/appium/appium-espresso-driver/compare/v6.3.10...v6.4.0) (2026-02-18)
 
 ### Features
