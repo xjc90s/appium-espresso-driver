@@ -2,6 +2,6 @@ package io.appium.espressoserver.lib.helpers
 
 // This value is updated automatically by the NPM versioning script
 // It should be in sync with the NPM module version from package.json
-private const val VERSION = "9.1.0"
+private const val VERSION = "9.2.0"
 
 fun getEspressoServerVersion() = VERSION

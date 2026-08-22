@@ -1,3 +1,9 @@
+## [9.2.0](https://github.com/appium/appium-espresso-driver/compare/v9.1.0...v9.2.0) (2026-08-22)
+
+### Features
+
+* add missing support for otherApps capability ([#1213](https://github.com/appium/appium-espresso-driver/issues/1213)) ([cb5c1d7](https://github.com/appium/appium-espresso-driver/commit/cb5c1d773dc4ad1927c2dffbb754ba63e19f8fe0))
+
 ## [9.1.0](https://github.com/appium/appium-espresso-driver/compare/v9.0.7...v9.1.0) (2026-08-21)
 
 ### Features
