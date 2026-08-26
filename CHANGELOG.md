@@ -1,3 +1,9 @@
+## [9.3.0](https://github.com/appium/appium-espresso-driver/compare/v9.2.0...v9.3.0) (2026-08-26)
+
+### Features
+
+* add missing support for mobile: screenshots method ([#1214](https://github.com/appium/appium-espresso-driver/issues/1214)) ([abd8d61](https://github.com/appium/appium-espresso-driver/commit/abd8d61c309033a28e1ce7e7f0ab60d339e7a986))
+
 ## [9.2.0](https://github.com/appium/appium-espresso-driver/compare/v9.1.0...v9.2.0) (2026-08-22)
 
 ### Features
