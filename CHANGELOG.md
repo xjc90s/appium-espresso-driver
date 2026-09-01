@@ -1,3 +1,9 @@
+## [9.3.2](https://github.com/appium/appium-espresso-driver/compare/v9.3.1...v9.3.2) (2026-09-01)
+
+### Bug Fixes
+
+* do not build espresso server on npm install ([#1220](https://github.com/appium/appium-espresso-driver/issues/1220)) ([3b35ec3](https://github.com/appium/appium-espresso-driver/commit/3b35ec3e71807ca2f130955958f5ced43466f3b0))
+
 ## [9.3.1](https://github.com/appium/appium-espresso-driver/compare/v9.3.0...v9.3.1) (2026-09-01)
 
 ### Miscellaneous Chores
