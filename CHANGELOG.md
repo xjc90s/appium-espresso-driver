@@ -1,3 +1,9 @@
+## [9.3.1](https://github.com/appium/appium-espresso-driver/compare/v9.3.0...v9.3.1) (2026-09-01)
+
+### Miscellaneous Chores
+
+* bump support & other deps ([#1219](https://github.com/appium/appium-espresso-driver/issues/1219)) ([8367768](https://github.com/appium/appium-espresso-driver/commit/83677685b1e2ecc76b599c03567947d6a705b4b8))
+
 ## [9.3.0](https://github.com/appium/appium-espresso-driver/compare/v9.2.0...v9.3.0) (2026-08-26)
 
 ### Features
